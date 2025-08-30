@@ -1,8 +1,11 @@
+import './HeaderPag.css'
 
 function HeaderPag() {
     return (
-        <header>
-            <a href="http://" target="_blank" rel="noopener noreferrer">Site Externo</a>
+        <header id='head'>
+            <a id='site-ext' href="http://" target="_blank" rel="noopener noreferrer">
+                Site Externo
+            </a>
         </header>
     )
 }

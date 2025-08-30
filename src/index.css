@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap');
+:root {
+    --cor01: #F6DE26;
+    --cor02: #F1BA0A;
+    --cor03: #A70B0B;
+    --cor04: #850A0A;
+    --cor05: #372B2B;
+    --cor06: #D9D9D9;
+
+    --font-pd: 'PT Sans Caption', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-pd);
+}
+
+body {
+    
+}

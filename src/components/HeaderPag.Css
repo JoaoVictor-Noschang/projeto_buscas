@@ -4,5 +4,40 @@
     --cor03: #A70B0B;
     --cor04: #850A0A;
     --cor05: #372B2B;
-    --cor06: #D9D9D9;
+
+    --cor-wt: #f8f8f8;
+    --cor-gr01: #D9D9D9;
+    --cor-gr02: #434343;
+
+    --radius: 15px;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    padding: 25px;
+}
+
+#site-ext {
+    width: 200px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--cor-gr01);
+    border-radius: var(--radius);
+    
+    text-decoration: none;
+    color: var(--cor-gr02);
+    font-weight: bold;
+}
+
+#site-ext:hover {
+    outline: 1px solid var(--cor-gr02);
+    background: var(--cor02);
+
+    transition: 0.2s;
 }
