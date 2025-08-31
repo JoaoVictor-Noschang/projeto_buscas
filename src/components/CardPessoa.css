@@ -1,13 +1,16 @@
 :root {
-    --cor01: #F6DE26;
-    --cor02: #F1BA0A;
-    --cor03: #A70B0B;
-    --cor04: #850A0A;
-    --cor05: #372B2B;
+    --cor01: #FAF0CA;
+    --cor02: #F4D35E;
+    --cor03: #EE964B;
+    --cor04: #F95738;
+    --cor05: #0D3B66;
 
     --cor-wt: #f8f8f8;
     --cor-gr01: #D9D9D9;
     --cor-gr02: #434343;
+
+    --cor-rd: #9e2a2b;
+    --cor-gr: #a1c181;
 
     --radius: 15px;
     --shadow: 0px 4px 8px hsla(0, 0%, 0%, 0.2);
@@ -15,11 +18,13 @@
 
 .card {
     width: 250px;
-    height: 400px;
+    height: 380px;
 
     border-radius: var(--radius);
+    border: 1px solid rgb(54, 54, 54);
+    box-shadow: var(--shadow);
 
-    background: var(--cor-gr01);
+    background: var(--cor05);
 
     position: relative;
 
@@ -27,7 +32,7 @@
 }
 
 .card:hover {
-    outline: 2px solid var(--cor05);
+    outline: 2px solid var(--cor02);
     border-radius: var(--radius);
 
     transform: translateY(-5px);
@@ -40,7 +45,7 @@
     padding: 20px;
 
     text-decoration: none;
-    color: var(--cor05);
+    color: var(--cor-wt);
 
     display: flex;
     flex-direction: column;
@@ -54,10 +59,12 @@
     height: 60%;
 
     border-radius: var(--radius);
+    border: 1px solid rgb(54, 54, 54);
 }
 
 .nome {
     font-weight: bold;
+    font-size: 1.125rem;
 }
 
 .data_desapa, .local {
@@ -69,29 +76,31 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
 .status {
-    width: 80%;
+    width: 85%;
     padding: 8px;
 
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
 
     text-align: center;
     font-weight: bold;
 
+    outline: 1px solid #434343;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
 
 .desap {
-    background: rgb(241, 116, 116);
+    background: var(--cor-rd);
 }
 
 .encon {
-    background-color: rgb(202, 234, 192);
+    background-color: var(--cor-gr);
+    color: var(--cor05);
 }
 
 

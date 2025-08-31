@@ -1,24 +1,51 @@
 :root {
-    --cor01: #F6DE26;
-    --cor02: #F1BA0A;
-    --cor03: #A70B0B;
-    --cor04: #850A0A;
-    --cor05: #372B2B;
+    --cor01: #FAF0CA;
+    --cor02: #F4D35E;
+    --cor03: #EE964B;
+    --cor04: #F95738;
+    --cor05: #0D3B66;
 
     --cor-wt: #f8f8f8;
     --cor-gr01: #D9D9D9;
     --cor-gr02: #434343;
 
+    --cor-rd: #9e2a2b;
+    --cor-gr: #a1c181;
+
     --radius: 15px;
+    --shadow: 0px 4px 8px hsla(0, 0%, 0%, 0.2);
+}
+
+.sec_galeria {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+
+    background: linear-gradient(to bottom, var(--cor05), #1A76CC);
+    z-index: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .galeria {
-    padding: 50px;
+    width: 100%;
+    padding: 100px 50px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .title_cards{
-    margin-bottom: 50px;
-    font-size: 1.125rem;
+    margin-bottom: 40px;
+
+    color: var(--cor01);
+    font-size: 1.375rem;
     font-weight: bold;
     text-align: center;
 }
@@ -26,9 +53,12 @@
 .grid_cards {
     width: 80%;
     margin: auto;
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, auto);
+    justify-content: center;
     gap: 40px;
+
     margin-bottom: 20px;
 }
 
@@ -40,7 +70,7 @@
 }
 
 .num_pag {
-    padding: 3px;
+    padding: 4px;
     width: 25px;
     height: 25px;
 
@@ -80,9 +110,26 @@
 }
 
 .opcoes:disabled {
-    background: #fff;
-    color: var(--cor-gr01);
+    background: var(--cor-wt);
+    color: #979797;
     border: 1px solid var(--cor-gr01);
 
     cursor: default;
+}
+
+.fundo_cards {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+
+    top: 40%;
+
+    transform: rotate(180deg) translateY(50%);
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.fundo_cards img {
+    width: 27%;
 }
