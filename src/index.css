@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap');
+
 :root {
-    --cor01: #F6DE26;
-    --cor02: #F1BA0A;
-    --cor03: #A70B0B;
-    --cor04: #850A0A;
-    --cor05: #372B2B;
-    --cor06: #D9D9D9;
+    --cor01: #FAF0CA;
+    --cor02: #F4D35E;
+    --cor03: #EE964B;
+    --cor04: #F95738;
+    --cor05: #0D3B66;
+
+    --cor-wt: #f8f8f8;
+    --cor-gr01: #D9D9D9;
+    --cor-gr02: #434343;
+
+    --cor-rd: #9e2a2b;
+    --cor-gr: #a1c181;
+
+    --radius: 15px;
+    --shadow: 0px 4px 8px hsla(0, 0%, 0%, 0.2);
 
     --font-pd: 'PT Sans Caption', sans-serif;
 }

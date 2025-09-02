@@ -5,6 +5,8 @@ import LogoLupa from '../assets/lupa_busca_01.svg';
 import DetEsqu from '../assets/det_esqu.svg';
 import DetDir from '../assets/det_dir.svg';
 
+import InputPersquisa from './InputPesquisa';
+
 function SectionHome() {
     return (
         <section className='sec_home'>
@@ -25,7 +27,9 @@ function SectionHome() {
                     <section className='titulos'>
                         <p>Informe se há notícias e</p>
                         <h1>Ajude a Encontrar Pessoas Desaparecidas!</h1>
-                        <button className='pesquisa'>Pesquise por Alguém...</button>
+
+                        <InputPersquisa />
+
                     </section>
                     <section className='titulo_prox_sess'>
                         <p>Talvez você conheçaou já tenha visto algumas dessas pessoas!</p>
