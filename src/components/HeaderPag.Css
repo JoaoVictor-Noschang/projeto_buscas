@@ -27,19 +27,19 @@ header {
 }
 
 .site-ext {
-    width: 200px;
-    padding: 15px;
+    padding: 15px 20px;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 
     background: var(--cor02);
     border-radius: var(--radius);
     
     text-decoration: none;
     color: var(--cor-gr02);
-    font-weight: bold;
 
     box-shadow: var(--shadow);
 
@@ -49,7 +49,13 @@ header {
 .site-ext:hover {
     outline: 1px solid var(--cor05);
     
-    transform: translate(2px, -2px);
+    transition: translate 0.3s;
+}
 
-    transition: outline 0.33s,  translate 0.3s;
+.site-ext p {
+    font-weight: bold;
+}
+
+.site-ext span {
+    font-size: 0.875rem;
 }
