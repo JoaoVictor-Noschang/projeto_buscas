@@ -11,17 +11,6 @@ function SectionHome() {
     return (
         <section className='sec_home'>
             <section className='home'>
-                <aside className='redes'>
-                    <a href="RedeSocial" className='label_icon'>
-                        <img className='icon' src="https://i.pinimg.com/736x/3f/53/d2/3f53d26536bdedabb41a73f420b1c07a.jpg" alt="Instagram" />
-                    </a>
-                    <a href="RedeSocial" className='label_icon'>
-                        <img className='icon' src="https://i.pinimg.com/736x/3f/53/d2/3f53d26536bdedabb41a73f420b1c07a.jpg" alt="Fecebook" />
-                    </a>
-                    <a href="RedeSocial" className='label_icon'>
-                        <img className='icon' src="https://i.pinimg.com/736x/3f/53/d2/3f53d26536bdedabb41a73f420b1c07a.jpg" alt="Contato Emergencia" />
-                    </a>
-                </aside>
                 <main className='home_infos'>
                     <img src={LogoLupa} alt="Logo Lupa" />
                     <section className='titulos'>

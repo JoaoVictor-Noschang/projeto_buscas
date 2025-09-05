@@ -17,8 +17,8 @@
 }
 
 header {
-    width: 100%;
     position: fixed;
+    right: 0px;
     z-index: 2;
     padding: 50px;
 
@@ -43,13 +43,16 @@ header {
 
     box-shadow: var(--shadow);
 
-    transition: outline 0.3s,  translate 0.3s;
+    transition: background 0.2s;
 }
 
 .site-ext:hover {
-    outline: 1px solid var(--cor05);
+    outline: 4px solid var(--cor02);
+    background: var(--cor-wt);
+    color: var(--cor03);
+
     
-    transition: translate 0.3s;
+    transition: background 0.2s;
 }
 
 .site-ext p {
