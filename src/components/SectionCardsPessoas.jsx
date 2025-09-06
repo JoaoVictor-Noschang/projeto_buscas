@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardPessoa from "./CardPessoa";
 
 import './SectionCardsPessoas.css';
@@ -6,74 +6,82 @@ import './SectionCardsPessoas.css';
 import DetEsqu from '../assets/det_esqu.svg';
 import DetDir from '../assets/det_dir.svg';
 
+import { getPessoasRandom } from "../services/getPessoasRandom";
+
 function SectionCardsPessoas() {
-    // Lista Ficticia de pessoas
-    const pessoas = [
-        { nome: "João", status: "Desaparecido" },
-        { nome: "Pedro", status: "Desaparecido" },
-        { nome: "Emanoel", status: "Encontrado" },
-        { nome: "Lúcia", status: "Encontrado" },
-        { nome: "Mariana", status: "Encontrado" },
-        { nome: "Ana", status: "Encontrado" },
-        { nome: "Carlos", status: "Desaparecido" },
-        { nome: "Fernanda", status: "Desaparecido" },
-        { nome: "Rafael", status: "Desaparecido" },
-        { nome: "Beatriz", status: "Desaparecido" },
-        { nome: "Paulo", status: "Desaparecido" },
-        { nome: "Juliana", status: "Desaparecido" },
-        { nome: "Ricardo", status: "Desaparecido" },
-        { nome: "Camila", status: "Desaparecido" },
-        { nome: "Thiago", status: "Desaparecido" }
-    ];
 
-    const [paginaAtual, setPaginaAtual] = useState(1);
-    const itensPorPagina = 12;
+    const [pessoas, setPessoas] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const indiceInicial = (paginaAtual - 1) * itensPorPagina;
-    const indiceFinal = indiceInicial + itensPorPagina;
+    const fetchData = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const data = await getPessoasRandom(12);
+            setPessoas(data);
+        } catch (err) {
+            setError("Ocorreu um erro ao carregar as pessoas. Tente novamente mais tarde.", err);
+        } finally {
+            setLoading(false);
+        }
+    }
 
-    const itensPagina = pessoas.slice(indiceInicial, indiceFinal);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-    const totalPaginas = Math.ceil(pessoas.length / itensPorPagina);
+    const handleAtualizar = () => {
+        fetchData();
+    }
+
+    const renderContent = () => {
+        if (loading) {
+            return (
+                <div className="grid_cards grid_message loading">
+                    <p>Carregando...</p>
+                    <div className="loading-spinner"></div>
+                </div>
+            );
+        }
+
+        if (error) {
+            return (
+                <div className="grid_cards grid_message error">
+                    <p>{error}</p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="grid_cards">
+                {pessoas.map((pessoa) => (
+                    <CardPessoa
+                        key={pessoa.id}
+                        foto={pessoa.urlFoto}
+                        nome={pessoa.nome}
+                        dataDesap={pessoa.ultimaOcorrencia?.dtDesaparecimento}
+                        status={pessoa.ultimaOcorrencia?.dataLocalizacao != null 
+                                    ? `Encontrado ${pessoa.ultimaOcorrencia?.dataLocalizacao}` 
+                                    : `Desaparecido ${pessoa.ultimaOcorrencia?.dataLocalizacao}`}
+                        local={pessoa.ultimaOcorrencia?.localDesaparecimentoConcat}
+                    />
+                ))}
+            </div>
+        );
+    };
 
     return (
         <section className="sec_galeria">
             <section className="galeria">
-                <p className="title_cards">Ajude a encontra-los!</p>
-                
-                <aside className="grid_cards">
-                    {itensPagina.map((pessoa, index) => (
-                        <CardPessoa key={index} nome={pessoa.nome} status={pessoa.status} />
-                    ))}
-                </aside>
-                <div className="controles_pag">
-                    <button
-                        disabled={paginaAtual === 1}
-                        onClick={() => setPaginaAtual(paginaAtual - 1)}
-                        className="opcoes"
-                    >
-                        {"<<"} Anterior
-                    </button>
-                    {Array.from({ length: totalPaginas }, (_, i) => (
-                        <button
-                            key={i}
-                            onClick={() => setPaginaAtual(i + 1)}
-                            className={paginaAtual === i + 1 ? "num_pag , pag_atual" : "num_pag"}
-                
-                        >
-                            {i + 1}
-                        </button>
-                    ))}
-                    <button
-                        disabled={paginaAtual === totalPaginas}
-                        onClick={() => setPaginaAtual(paginaAtual + 1)}
-                        className="opcoes"
-                    >
-                        Próxima {">>"}
-                    </button>
-                </div>
+                <section className="header_sec">
+                    <p className="title_cards">Ajude a encontrá-los!</p>
+                    <button className="atualizar" onClick={handleAtualizar} disabled={loading}>Atualizar Pessoas</button>
+                </section>
+                {renderContent()}
             </section>
-            <section className='fundo_cards '>
+
+            <section className='fundo_cards'>
                 <img src={DetEsqu} alt="Fundo Esquerdo" />
                 <img src={DetDir} alt="Fundo Direito" />
             </section>
@@ -82,3 +90,4 @@ function SectionCardsPessoas() {
 }
 
 export default SectionCardsPessoas;
+
