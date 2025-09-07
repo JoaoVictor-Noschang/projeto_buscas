@@ -97,7 +97,7 @@
 
 .form_busca.visible {
     opacity: 1;
-    pointer-events: auto; /* Permite cliques quando estiver visível */
+    pointer-events: auto;
     transform: translateY(0);
 }
 
