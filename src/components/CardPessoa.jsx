@@ -20,8 +20,7 @@ function CardPessoa(props) {
 
     function verDetalhesPessoa(pessoa) {
         const query = new URLSearchParams();
-        query.set("nome", pessoa.nome);
-        query.set("status", pessoa.status);
+        query.set("id", pessoa.id);
         navigate(`/DetalhePessoa?${query.toString()}`);
     }
 
@@ -65,7 +64,7 @@ function CardPessoa(props) {
             >
                 {props.status != null ? "Encontrado(a)": "Desaparecido(a)"}
             </p>
-            <button className='mais_detal' onClick={() => verDetalhesPessoa(props)} >Ver Detalhes</button>
+            <button className='mais_detal' onClick={verDetalhesPessoa} >Ver Detalhes</button>
         </section>
     )
 }

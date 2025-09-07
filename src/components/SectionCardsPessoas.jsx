@@ -58,6 +58,7 @@ function SectionCardsPessoas() {
                 {pessoas.map((pessoa) => (
                     <CardPessoa
                         key={pessoa.id}
+                        id={pessoa.id}
                         foto={pessoa.urlFoto}
                         nome={pessoa.nome}
                         dataDesap={pessoa.ultimaOcorrencia?.dtDesaparecimento}

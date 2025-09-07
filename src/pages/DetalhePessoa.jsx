@@ -15,9 +15,7 @@ function DetalhePessoa() {
     }
 
     const [searchParamns] = useSearchParams();
-    const nome = searchParamns.get("nome");
-    const status = searchParamns.get("status");
-
+    const id = searchParamns.get("id");
 
     const verificStatus = (status) => {
         if(status != null && status !== 'null') {
@@ -25,9 +23,7 @@ function DetalhePessoa() {
         } else {
             return `Desaparecido(a)`;
         }
-
     }
-
 
     return (
         <main>
@@ -40,14 +36,14 @@ function DetalhePessoa() {
                         <img src="https://i.pinimg.com/736x/3f/53/d2/3f53d26536bdedabb41a73f420b1c07a.jpg" alt="Imagem Pessoa" />
                     </aside>
                     <main className='dados_infos'>
-                        <h1>{nome}</h1>
+                        <h1>{id} - Nome</h1>
                         <p><span>Idade:</span> XX</p>
                         <p><span>Sexo:</span> Masculino</p>
                         <p><span>Data de Desaparecimento:</span> xx/xx/xx</p>
                         <p><span className='tl_block'>Local de Desaparecimento:</span> Cidade, Estado</p>
                         <p><span className='tl_block'>Informações da última ocorrência:</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur illum ipsum minus? Sit non voluptatibus eaque soluta expedita. Nam incidunt placeat soluta ipsa maiores asperiores possimus id porro explicabo provident!</p>
                         <p><span className='tl_block'>Vestimenta na ocorrência:</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <h2>{verificStatus(status)}</h2>
+                        <h2>{verificStatus(null)}</h2>
                     </main>
                 </section>
                 <button className='enviar_infos'>
