@@ -33,6 +33,9 @@
 }
 
 .btn_home {
+    width: 50px;
+    height: 50px;
+
     background: var(--cor02);
     padding: 15px;
 
@@ -43,11 +46,21 @@
     position: absolute;
     top: 50px;
     left: 50px;
+
+    transition: background 0.2s;
 }
 
 .btn_home:hover {
     outline: 3px solid var(--cor05);
+    background: var(--cor-wt);
+
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn_home img {
+    width: 100%;
+    height: 100%;
 }
 
 .infos {

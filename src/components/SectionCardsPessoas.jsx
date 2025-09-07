@@ -61,9 +61,7 @@ function SectionCardsPessoas() {
                         foto={pessoa.urlFoto}
                         nome={pessoa.nome}
                         dataDesap={pessoa.ultimaOcorrencia?.dtDesaparecimento}
-                        status={pessoa.ultimaOcorrencia?.dataLocalizacao != null 
-                                    ? `Encontrado ${pessoa.ultimaOcorrencia?.dataLocalizacao}` 
-                                    : `Desaparecido ${pessoa.ultimaOcorrencia?.dataLocalizacao}`}
+                        status={pessoa.ultimaOcorrencia?.dataLocalizacao}
                         local={pessoa.ultimaOcorrencia?.localDesaparecimentoConcat}
                     />
                 ))}
@@ -72,7 +70,7 @@ function SectionCardsPessoas() {
     };
 
     return (
-        <section className="sec_galeria">
+        <section className="sec_galeria" id="galeria_pessoas_random">
             <section className="galeria">
                 <section className="header_sec">
                     <p className="title_cards">Ajude a encontrá-los!</p>

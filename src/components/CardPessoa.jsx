@@ -1,9 +1,22 @@
 import { useNavigate } from 'react-router-dom';
+
 import './CardPessoa.css';
+
+import FotoPadrao from "../assets/person.svg";
+import { useEffect, useState } from 'react';
 
 function CardPessoa(props) {
 
     const navigate = useNavigate();
+    const [fotoAtual, setFotoAtual] = useState(props.foto);
+
+    useEffect(() => {
+        setFotoAtual(props.foto);
+    }, [props.foto]);
+
+    const erroDeImagem = () => {
+        setFotoAtual(FotoPadrao);
+    };
 
     function verDetalhesPessoa(pessoa) {
         const query = new URLSearchParams();
@@ -12,20 +25,47 @@ function CardPessoa(props) {
         navigate(`/DetalhePessoa?${query.toString()}`);
     }
 
+    const formatarData = (dataString) => {
+        if (!dataString) {
+            return "Data não informada";
+        }
+
+        try {
+            const data = new Date(dataString);
+
+            if (isNaN(data.getTime())) {
+                return "Data inválida";
+            }
+
+            return new Intl.DateTimeFormat('pt-BR').format(data);
+
+        } catch (error) {
+            console.error("Erro ao formatar data:", error);
+            return "Data inválida";
+        }
+    };
+
+    const dataFormatada = formatarData(props.dataDesap);
+
     return (
         <section className="card">
-            <img className="img_pessoa" src={props.foto} alt="img de pessoa" />
+            <div className="img_pessoa">
+                <img  src={fotoAtual} alt="Foto da Pessoa" onError={erroDeImagem}/>
+            </div>
             <div className='dados'>
                 <p className="nome">{props.nome}</p>
-                <p className="data_desapa">{props.dataDesap}</p>
+                <div className="data_desapa">
+                    <p>Desaparecimento:</p> 
+                    <p>{dataFormatada}</p>
+                </div>
                 <p className="local">{props.local}</p>
             </div>
             <p
-                className={props.status === "Desaparecido" ? "status , desap" : "status , encon"}
+                className={props.status != null ? "status , encon": "status , desap" }
             >
-                {props.status}
+                {props.status != null ? "Encontrado(a)": "Desaparecido(a)"}
             </p>
-            <button onClick={() => verDetalhesPessoa(props)} >Ver Detalhes</button>
+            <button className='mais_detal' onClick={() => verDetalhesPessoa(props)} >Ver Detalhes</button>
         </section>
     )
 }

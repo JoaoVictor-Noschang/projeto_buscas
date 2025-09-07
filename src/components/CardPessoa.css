@@ -18,68 +18,122 @@
 
 .card {
     width: 250px;
-    padding: 15px;
+    height: 600px;
+    padding: 25px;
 
-    border-radius: var(--radius);
-    border: 1px solid rgb(54, 54, 54);
-    box-shadow: var(--shadow);
-
-    background: var(--cor05);
-
-    position: relative;
+    background: var(--cor-wt);
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 
 .img_pessoa {
     width: 100%;
     height: 60%;
-
+    
     border-radius: var(--radius);
-    border: 1px solid rgb(54, 54, 54);
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.nome {
-    font-weight: bold;
-    font-size: 1.125rem;
-}
+.img_pessoa img {
+    width: 100%;
+    height: 100%;
 
-.data_desapa, .local {
-    font-size: 0.875rem;
+    object-fit: cover;
+    display: block;
 }
 
 .dados {
     width: 100%;
+    height: 40%;
+
     text-align: left;
+
     display: flex;
     flex-direction: column;
-    gap: 4px;
+}
+
+.nome {
+    height: 50%;
+
+    font-weight: bold;
+    font-size: 1.125rem;
+}
+
+.data_desapa {
+    font-size: 0.875rem;
+    height: 25%;
+}
+
+.data_desapa span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.local {
+    height: 25%;
+    font-size: 0.75rem;
+    align-content: center;
+
 }
 
 .status {
-    width: 85%;
-    padding: 8px;
+    width: 80%;
+    height: 8%;
+    margin: 2% auto;
 
     text-align: center;
+    align-content: center;
+
     font-weight: bold;
 
-    outline: 1px solid #434343;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
 
 .desap {
     background: var(--cor-rd);
+    color: var(--cor-wt);
 }
 
 .encon {
     background-color: var(--cor-gr);
     color: var(--cor05);
+}
+
+.mais_detal {
+    height: 10%;
+    width: 100%;
+    border: none;
+    background: var(--cor02);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--cor05);
+
+    cursor: pointer;
+    transition: backgroun 0.2s;
+}
+
+.mais_detal:hover {
+    background: var(--cor-gr01);
+    outline: 3px solid var(--cor03);
+
+    transition: backgroun 0.2s;
 }
 
 

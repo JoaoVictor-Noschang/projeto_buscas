@@ -18,11 +18,14 @@
 
 .inputs_pesquisa {
     width: 100%;
+
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .btn_pesquisa {
     font-size: 1.375rem;
     color: var(--cor04);
+    font-weight: bold;
 
     padding: 10px;
     margin: 20px 0px 10px 0px;
@@ -35,15 +38,22 @@
     box-shadow: var(--shadow);
 
     cursor: pointer;
-
-    transition: width 0.15s;
+    transition: background 0.3s, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .btn_pesquisa:hover {
-    width: 85%;
+    outline: 4px solid var(--cor03);
+    background: var(--cor-wt);
 
-    transition: width 0.15s;
+    transition: background 0.3s, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
+
+.btn_pesquisa.hidden-button {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%) scale(0.9);
+}
+
 
 /* Formulário para filtros de pesquisa */
 
@@ -63,6 +73,12 @@
     gap: 20px;
 
     position: relative;
+
+    opacity: 0;
+    pointer-events: none;
+    margin-top: -50px;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .form_busca p {
@@ -77,6 +93,12 @@
     border-radius: var(--radius);
     border: none;
     box-shadow: var(--shadow);
+}
+
+.form_busca.visible {
+    opacity: 1;
+    pointer-events: auto; /* Permite cliques quando estiver visível */
+    transform: translateY(0);
 }
 
 .close {
@@ -162,12 +184,16 @@
     font-size: 1rem;
     font-weight: bold;
     color: var(--cor05);
+
+    transition: background 0.2s;
 }
 
 .btn_sub:hover {
-    outline: 2px solid #2b83d6;
+    outline: 3px solid #2b83d6;
+    background: var(--cor-wt);
 
     transform: translateY(-1px);
+    transition: background 0.2s;
     cursor: pointer;
 }
 

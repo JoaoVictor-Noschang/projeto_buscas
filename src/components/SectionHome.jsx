@@ -8,6 +8,19 @@ import DetDir from '../assets/det_dir.svg';
 import InputPersquisa from './InputPesquisa';
 
 function SectionHome() {
+
+    const handleVerPessoasRandom = () => {
+
+        const nextSection = document.getElementById('galeria_pessoas_random');
+
+        if (nextSection) {
+            nextSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            })
+        }
+    }
+
     return (
         <section className='sec_home'>
             <section className='home'>
@@ -22,7 +35,7 @@ function SectionHome() {
                     </section>
                     <section className='titulo_prox_sess'>
                         <p>Talvez você conheçaou já tenha visto algumas dessas pessoas!</p>
-                        <button>
+                        <button onClick={handleVerPessoasRandom}>
                             <img src={Arrow} alt="Arrow" />
                         </button>
                     </section>

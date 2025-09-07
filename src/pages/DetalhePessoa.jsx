@@ -1,5 +1,6 @@
 import DetEsqu from '../assets/det_esqu.svg';
 import DetDir from '../assets/det_dir.svg';
+import HomeIcon from '../assets/home.svg';
 
 import './DetalhePessoa.css';
 import FormInfosPessoa from '../components/FormInfosPessoa';
@@ -17,12 +18,22 @@ function DetalhePessoa() {
     const nome = searchParamns.get("nome");
     const status = searchParamns.get("status");
 
+
+    const verificStatus = (status) => {
+        if(status != null && status !== 'null') {
+            return `Encontrado(a)`
+        } else {
+            return `Desaparecido(a)`;
+        }
+
+    }
+
+
     return (
         <main>
             <section className="sec_detalhes">
                 <button onClick={voltarPararHome} className='btn_home'>
-                    🏠
-                    <img src="" alt="" />
+                    <img src={HomeIcon} alt="" />
                 </button>
                 <section className='infos'>
                     <aside className='ctn_img'>
@@ -36,7 +47,7 @@ function DetalhePessoa() {
                         <p><span className='tl_block'>Local de Desaparecimento:</span> Cidade, Estado</p>
                         <p><span className='tl_block'>Informações da última ocorrência:</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur illum ipsum minus? Sit non voluptatibus eaque soluta expedita. Nam incidunt placeat soluta ipsa maiores asperiores possimus id porro explicabo provident!</p>
                         <p><span className='tl_block'>Vestimenta na ocorrência:</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <h2>{status}</h2>
+                        <h2>{verificStatus(status)}</h2>
                     </main>
                 </section>
                 <button className='enviar_infos'>
