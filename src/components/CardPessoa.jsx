@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-
 import './CardPessoa.css';
 
 import FotoPadrao from "../assets/person.svg";
@@ -7,7 +5,6 @@ import { useEffect, useState } from 'react';
 
 function CardPessoa(props) {
 
-    const navigate = useNavigate();
     const [fotoAtual, setFotoAtual] = useState(props.foto);
 
     useEffect(() => {
@@ -18,10 +15,14 @@ function CardPessoa(props) {
         setFotoAtual(FotoPadrao);
     };
 
-    function verDetalhesPessoa(pessoa) {
+    function verDetalhesPessoa(pessoaId) {
         const query = new URLSearchParams();
-        query.set("id", pessoa.id);
-        navigate(`/DetalhePessoa?${query.toString()}`);
+        query.set("id", pessoaId);
+
+        const baseUrl = window.location.origin;
+        const urlCompleta = `${baseUrl}/DetalhePessoa?${query.toString()}`
+
+        window.open(urlCompleta, '_blank');
     }
 
     const formatarData = (dataString) => {
@@ -64,7 +65,7 @@ function CardPessoa(props) {
             >
                 {props.status != null ? "Encontrado(a)": "Desaparecido(a)"}
             </p>
-            <button className='mais_detal' onClick={verDetalhesPessoa} >Ver Detalhes</button>
+            <button className='mais_detal' onClick={() => verDetalhesPessoa(props.id)} >Ver Detalhes</button>
         </section>
     )
 }

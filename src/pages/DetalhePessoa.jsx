@@ -11,7 +11,12 @@ function DetalhePessoa() {
     const navigate = useNavigate();
 
     function voltarPararHome() {
-        navigate(`/`);
+
+        if(window.opener) {
+            window.close();
+        } else {
+            navigate(`/`);
+        }
     }
 
     const [searchParamns] = useSearchParams();
