@@ -1,9 +1,12 @@
-import { StrictMode } from 'react'
+import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import DetalhePessoa from './pages/DetalhePessoa.jsx'
+import './index.css'
+
+import App from './App.jsx'
+
+const DetalhePessoa = lazy(() => import('./pages/DetalhePessoa.jsx'));
+
 
 const router = createBrowserRouter([
   {
@@ -11,8 +14,12 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/DetalhePessoa", 
-    element: <DetalhePessoa />,
+    path: "/DetalhePessoa",
+    element: (
+      <Suspense fallback={<div className="loading-det">Carregando detalhes...<div className="det-spinner"></div></div>}>
+        <DetalhePessoa />
+      </Suspense>
+    ),
   },
 ]);
 
