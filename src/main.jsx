@@ -7,7 +7,6 @@ import App from './App.jsx'
 
 const DetalhePessoa = lazy(() => import('./pages/DetalhePessoa.jsx'));
 
-
 const router = createBrowserRouter([
   {
     path: "/",

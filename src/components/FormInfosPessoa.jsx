@@ -1,8 +1,8 @@
 import './FormInfosPessoa.css';
 
-function FormInfosPessoa() {
+function FormInfosPessoa({ formRef }) {
     return (
-        <section className="sec_form">
+        <section className="sec_form" ref={formRef}>
             <form action="" className="form_infos">
                 <h1>Enviar Informações Sobre: Nome da Pessoa</h1>
                 <label className='label_form'>

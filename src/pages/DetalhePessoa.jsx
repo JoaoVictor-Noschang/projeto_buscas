@@ -7,7 +7,7 @@ import './DetalhePessoa.css';
 import FormInfosPessoa from '../components/FormInfosPessoa';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getDetalhesPessoa } from '../services/getDetalhesPessoa';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function DetalhePessoa() {
 
@@ -18,8 +18,9 @@ function DetalhePessoa() {
     const [pessoa, setPessoa] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
     const [fotoDaPessoa, setFotoDaPessoa] = useState(null);
+
+    const formRef = useRef(null);
 
     function voltarPararHome() {
         if (window.opener) {
@@ -28,6 +29,17 @@ function DetalhePessoa() {
             navigate(`/`);
         }
     }
+
+    const irParaFormulario = () => {
+        if (formRef.current) {
+            const top = formRef.current.getBoundingClientRect().top + window.scrollY;
+            const offset = 50;
+            window.scrollTo({
+                top: top - offset,
+                behavior: "smooth",
+            });
+        }
+    };
 
     const fetchData = async () => {
         if (!id) {
@@ -42,7 +54,6 @@ function DetalhePessoa() {
         try {
             const data = await getDetalhesPessoa(id);
             setPessoa(data);
-
             setFotoDaPessoa(data?.urlFoto || FotoPadrao);
 
         } catch (err) {
@@ -77,7 +88,6 @@ function DetalhePessoa() {
             if (isNaN(data.getTime())) {
                 return "Data inválida";
             }
-
             return new Intl.DateTimeFormat('pt-BR').format(data);
 
         } catch (error) {
@@ -143,7 +153,13 @@ function DetalhePessoa() {
                         <span className='tl_block'>Vestimenta na ocorrência:</span>
                         <p>{pessoa.ultimaOcorrencia?.ocorrenciaEntrevDesapDTO?.vestimentasDesaparecido || "Não informada"}</p>
                     </div>
-                    <h2>{verificStatus(pessoa.ultimaOcorrencia?.dataLocalizacao)}</h2>
+                    <h2
+                        className={
+                            pessoa.ultimaOcorrencia?.dataLocalizacao != null && pessoa.ultimaOcorrencia?.dataLocalizacao !== 'null'
+                                ? "st_encont stat"
+                                : "st_desap stat"
+                        }
+                    >{verificStatus(pessoa.ultimaOcorrencia?.dataLocalizacao)}</h2>
                 </main>
             </section>
         );
@@ -158,7 +174,7 @@ function DetalhePessoa() {
 
                 {renderContent()}
 
-                <button className='enviar_infos'>
+                <button className='enviar_infos' onClick={irParaFormulario}>
                     Tenho informações
                 </button>
 
@@ -168,7 +184,7 @@ function DetalhePessoa() {
                 </section>
             </section>
 
-            <FormInfosPessoa />
+            <FormInfosPessoa formRef={formRef} />
         </main>
     );
 }

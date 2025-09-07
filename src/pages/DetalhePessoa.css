@@ -172,17 +172,27 @@
     font-weight: bold;
 }
 
-.dados_infos h2 {
+.stat {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
 
     text-align: center;
 
-    border: 4px solid var(--cor-gr);
-    color: var(--cor-gr);
+    outline: 4px solid #000;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    background: var(--cor-wt);
+}
+
+.st_desap {
+    outline-color: var(--cor-rd);
+    color: var(--cor-rd);
+}
+
+.st_encont {
+    outline-color: var(--cor-gr);
+    color: var(--cor-gr);
 }
 
 .linha_infos {
@@ -321,7 +331,7 @@
         z-index: 3;
     }
 
-    .dados_infos h2 {
+    .stat {
         width: 50%;
         padding: 5px;
         margin: 0 auto;
@@ -362,7 +372,7 @@
         border-radius: 50%;
     }
 
-    .dados_infos h2 {
+    .stat {
         width: 50%;
         position: absolute;
         top: -10%;
