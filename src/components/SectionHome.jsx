@@ -27,7 +27,7 @@ function SectionHome() {
                 <main className='home_infos'>
                     <img src={LogoLupa} alt="Logo Lupa" />
                     <section className='titulos'>
-                        <p>Informe se há notícias e</p>
+                        <p className='tl_p'>Informe se há notícias e</p>
                         <h1>Ajude a Encontrar Pessoas Desaparecidas!</h1>
 
                         <InputPersquisa />

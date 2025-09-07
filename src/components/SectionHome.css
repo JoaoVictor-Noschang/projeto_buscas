@@ -23,7 +23,8 @@ body {
 .sec_home {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
 
     background: linear-gradient(to bottom, #1A76CC, var(--cor05));
 
@@ -33,7 +34,8 @@ body {
 .home {
     width: 100%;
     padding: 50px;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     
     display: flex;
     justify-content: flex-start;
@@ -79,7 +81,7 @@ body {
     text-shadow: var(--shadow);
 }
 
-.titulos p {
+.tl_p {
     font-size: 1.5rem;
 }
 
