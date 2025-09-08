@@ -1,10 +1,16 @@
-# Projeto Web para a Vaga de Desenvolvedor Junior
+# Projeto Web para Buscas de Desaparecidos
 
-Site Web parar consulta de pessoas desaparecidas, e envio de informações referentes ao paradeiros delas.
+- Site Web parar consulta de pessoas desaparecidas, e envio de informações referentes ao paradeiros delas.
 
-## Candidato
+<br>
 
-João Victor Noschang Silva
+## 👨‍💻 Desenvolvedor
+
+Candidato: **João Victor Noschang Silva**
+
+Vaga: **Desenvolvedor Junior**
+
+<br>
 
 ## Plataforma de Localização de Desaparecidos
 
@@ -19,7 +25,7 @@ João Victor Noschang Silva
 
 Trata-se de uma plataforma web desenvolvida para auxiliar na busca por pessoas desaparecidas. O objetivo é fornecer uma ferramenta acessível para que a comunidade possa visualizar informações detalhadas sobre ocorrências e, de forma colaborativa, enviar dados de avistamento, como localização e fotos.
 
-Permitindo o usuário, pesquisar pessoas, verificar uma lista de pessoas que talves ele conheça, verificar dados detalhados de uma pessoa em específico e até mesmo colaborar enviando dados de avistamento da pessoa, até mesmo enviando imagem da pessoa.
+Permitindo o usuário, pesquisar pessoas, verificar uma lista de pessoas que talvez ele conheça, verificar dados detalhados de uma pessoa em específico e até mesmo colaborar enviando dados de avistamento da pessoa, e podendo enviar uma imagem da pessoa.
 
 Este projeto foi construído utilizando **React** e **JavaScript** para o front-end, consumindo uma API RESTful para gerenciar as informações de pessoas desaparecidas e os dados de avistamento.
 
@@ -43,8 +49,7 @@ Certifique-se de que você tem o **Node.js** (versão 18+) e o **npm** ou **Yarn
 ### 1. Clonar o Repositório
 
 ```bash
-git clone [https://github.com/JoaoVictor-Noschang/projeto_buscas](https://github.com/JoaoVictor-Noschang/projeto_buscas)
-cd seu-projeto
+git clone https://github.com/JoaoVictor-Noschang/projeto_buscas cd seu-projeto
 ```
 
 ### 2. Instalar as Dependências
@@ -52,7 +57,7 @@ cd seu-projeto
 ```Bash
 npm install
 
-ou
+#ou
 
 yarn install
 ```
@@ -88,7 +93,8 @@ docker run -d --name contair-app-buscas -p 3000:80 aplicacao-buscas
 A aplicação estará disponível em http://localhost:3000.
 
 
-📝 Licença
+## 📝 Licença
+
 Este projeto está licenciado sob a Licença MIT.
 
-Desenvolvido por João Victor.
+**Desenvolvido por João Victor 🚀**
