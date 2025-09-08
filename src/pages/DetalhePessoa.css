@@ -339,7 +339,6 @@
         text-align: center;
         font-size: 1.125rem;
 
-        color: var(--cor-gr);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
     }
