@@ -37,11 +37,6 @@ function FormInfosPessoa({ formRef, ocoId, nomePessoa }) {
 
         try {
 
-            console.log("Enviando dados:", dados);
-            if (anexo) {
-                console.log("Arquivo:", anexo.name, anexo.type, anexo.size);
-            }
-
             await enviarInfosPessoa(dados, anexo);
             
             setMensagem('Informações enviadas com sucesso! Agradecemos sua colaboração.');
