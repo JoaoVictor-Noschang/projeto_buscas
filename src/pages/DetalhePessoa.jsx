@@ -184,7 +184,11 @@ function DetalhePessoa() {
                 </section>
             </section>
 
-            <FormInfosPessoa formRef={formRef} />
+            <FormInfosPessoa
+                formRef={formRef}
+                ocoId={pessoa?.ultimaOcorrencia?.ocoId}
+                nomePessoa={pessoa?.nome}
+            />
         </main>
     );
 }

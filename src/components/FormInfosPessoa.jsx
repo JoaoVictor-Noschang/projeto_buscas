@@ -1,30 +1,115 @@
+import { useState } from 'react';
+import { enviarInfosPessoa } from '../services/enviarInfosPessoa';
+
 import './FormInfosPessoa.css';
 
-function FormInfosPessoa({ formRef }) {
+function FormInfosPessoa({ formRef, ocoId, nomePessoa }) {
+
+    const [data, setData] = useState('');
+    const [informacao, setInformacao] = useState('');
+    const [anexo, setAnexo] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [mensagem, setMensagem] = useState('');
+    const [tipoMensagem, setTipoMensagem] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setMensagem('');
+        setTipoMensagem('');
+
+        if (!ocoId) {
+            setMensagem("Não foi possível identificar a ocorrência. O código (ocoId) é obrigatório.");
+            setTipoMensagem('erro');
+            setIsSubmitting(false);
+            return;
+        }
+
+        const nomeArquivo = anexo ? anexo.name : '';
+
+        const dados = {
+            ocoId: ocoId,
+            informacao: informacao,
+            data: data,
+            descricao: nomeArquivo
+        }
+
+
+        try {
+
+            console.log("Enviando dados:", dados);
+            if (anexo) {
+                console.log("Arquivo:", anexo.name, anexo.type, anexo.size);
+            }
+
+            await enviarInfosPessoa(dados, anexo);
+            
+            setMensagem('Informações enviadas com sucesso! Agradecemos sua colaboração.');
+            setTipoMensagem('sucesso');
+
+            setData('');
+            setInformacao('');
+            setAnexo(null);
+
+        } catch (err) {
+            if (err.response) {
+                console.error("Erro ao enviar informações:", err); 
+                setMensagem('Não foi possível enviar as informações. Tente novamente.'); 
+                setTipoMensagem('erro');
+
+            } else {
+                console.error("Erro:", err.message);
+            }
+            throw err;
+
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
     return (
         <section className="sec_form" ref={formRef}>
-            <form action="" className="form_infos">
-                <h1>Enviar Informações Sobre: Nome da Pessoa</h1>
+            <form onSubmit={handleSubmit} className="form_infos">
+                <h1>Enviar Informações Sobre: {nomePessoa}</h1>
                 <label className='label_form'>
                     <p>Data de Avistamento:</p>
-                    <input type="date" placeholder="Campo Verde, Mato Grosso" />
+                    <input
+                        type="date"
+                        value={data}
+                        onChange={(e) => setData(e.target.value)}
+                        required
+                    />
                 </label>
                 <label className='label_form'>
-                    <p>Local de Avistamento:</p>
-                    <input type="text" placeholder="Campo Verde, Mato Grosso" />
-                </label>
-                <label className='label_form'>
-                    <p>Telefone da Pessoa:</p>
-                    <input type="tel" placeholder="(00) 9 0000-0000" />
+                    <p>Informação do Avistamento:</p>
+                    <textarea
+                        rows="4"
+                        placeholder="Ex: Foi visto(a) em (endereço completo), utilizando (descrição das vestimentas), etc."
+                        value={informacao}
+                        onChange={(e) => setInformacao(e.target.value)}
+                        required
+                    />
                 </label>
                 <label className='label_form lb-arquivo'>
                     <p>Imagem da Pessoa:</p>
-                    <input className='arquivo' type="file" name="" id="" />
+                    <input
+                        className='arquivo'
+                        type="file"
+                        onChange={(e) => setAnexo(e.target.files[0])}
+                    />
                 </label>
-                <button type="submit">Enviar</button>
+                <button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Enviando...' : 'Enviar'}
+                </button>
             </form>
+
+            {mensagem && (
+                <p className={`mensagem-feedback ${tipoMensagem}`}>
+                    {mensagem}
+                </p>
+            )}
         </section>
-    )
+    );
 }
 
 export default FormInfosPessoa;
